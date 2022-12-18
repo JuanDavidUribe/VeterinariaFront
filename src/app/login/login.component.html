@@ -5,14 +5,14 @@
     <h1 class="tittle">Iniciar sesión</h1>
     <label for="">
       <fa-icon class="icon" [icon]="faUser"></fa-icon>
-      <input type="text" id="userName" placeholder="Nombre de usuario">
+      <input [(ngModel)]="user.userName" type="text" id="userName" placeholder="Nombre de usuario" name="userName">
     </label>
     <label for="">
       <fa-icon class="icon" [icon]="faLock"></fa-icon>
-      <input type="password" id="password" placeholder="Contraseña">
+      <input [(ngModel)]="user.password" type="password" id="password" placeholder="Contraseña" name="password">
     </label>
     <a href="#" class="link">¿Olvidaste tu contraseña?</a>
-    <button>Iniciar sesión</button>
+    <button (click)="login(user)" >Iniciar sesión</button>
   </form>
 
 </div>
