@@ -1,0 +1,69 @@
+
+.body{
+  display: flex;
+  align-items: center;
+  //padding-right: 10%;
+  justify-content: center;
+  min-height: 100vh;
+  //background-image: url("../../assets/img/veterinary-6819364_1920.png");
+  //background-size: 100%;
+  background: linear-gradient(to right, #10898d, #20dbd2);
+}
+
+img {
+  border-radius: 8%;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0 5px 10px #1A679B;
+  border-radius: 8%;
+}
+
+form.tittle {
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+form label {
+  margin-bottom: 20px;
+}
+
+form label .icon{
+  color:rgb(3, 34, 82);
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+form label input {
+  outline: none;
+  border: none;
+  border-bottom: solid 1px rgb(3, 34, 82);
+  padding: 0 5px;
+  font-size: 18px;
+}
+
+form label input::placeholder {
+  color: #09263a;
+}
+
+form .link {
+  color: #09263a;
+  margin-bottom: 20px;
+}
+
+
+form button{
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  background: #1a819b;
+}
