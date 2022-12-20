@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
     userName: ''
   }
 
+  navActive =false;
   activeLinks = false;
 
   faDog = faDog;
@@ -50,9 +51,11 @@ export class HomeComponent implements OnInit {
 
   openLinks() {
     if(this.activeLinks == false) {
+      this.navActive = true;
       this.activeLinks = true;
     } else {
       this.activeLinks = false;
+      this.navActive = false;
     }
   }
 

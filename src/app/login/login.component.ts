@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       if (data != null) {
         this.user = data;
         localStorage['id'] = this.user.id;
-        this.router.navigate(['home']);
+        this.router.navigate(['home/patients']);
       } else {
         alert('usuario o contraseña no validos');
       }

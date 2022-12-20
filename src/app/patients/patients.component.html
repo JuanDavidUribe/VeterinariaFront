@@ -1,0 +1,39 @@
+
+<div class="container">
+  <div class="actions">
+    <div class="search">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
+        <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faMagnifyingGlass"></fa-icon></button>
+      </form>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faPlus"></fa-icon>Añadir</button>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nombre del paciente</th>
+        <th scope="col">Especie</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Fecha nacimiento</th>
+        <th scope="col">Informacion Dueño(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Odin</td>
+        <td>Perro</td>
+        <td>Hot dog</td>
+        <td>01-12-2022</td>
+        <td>
+          <div class="form-group text-center">
+            <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faPerson"></fa-icon></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

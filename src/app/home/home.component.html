@@ -1,12 +1,12 @@
 <div class="body">
-  <nav>
+  <nav [class.navActive] = "navActive == true">
     <div class="container">
       <div class="container-logo">
         <fa-icon class="icon" [icon]="faDog"></fa-icon>
         <h2><span>Veterinaria</span></h2>
       </div>
       <ul class="links" [class.active] = "activeLinks == true">
-        <li class="link"><a>Pacientes</a></li>
+        <li class="link"><a routerLink="patients" >Pacientes</a></li>
         <li class="link"><a>Dueños</a></li>
         <p class="link">
           <a>{{user.name}}</a>
@@ -20,4 +20,8 @@
     </div>
   </nav>
 
+</div>
+
+<div class="router">
+  <router-outlet></router-outlet>
 </div>

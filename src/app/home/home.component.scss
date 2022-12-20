@@ -93,7 +93,6 @@ nav{
     //overflow: hidden;
     height: max-content;
     width: 100%;
-    z-index: -1;
     top: -100vh;
   }
 
@@ -101,7 +100,17 @@ nav{
     top: 80px;
   }
 
+  .navActive {
+    margin-bottom: 280px;
+  }
+
   .links .link:hover {
     background: #0b4749;
   }
+}
+
+.router {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
 }

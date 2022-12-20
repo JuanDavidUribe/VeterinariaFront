@@ -1,0 +1,34 @@
+.btn-outline-success{
+  background-color: #10898d;
+  color: azure;
+  border: white;
+}
+
+.btn-outline-success:hover {
+  background-color: #13a3a8;
+}
+
+.tableButton {
+  justify-content: center;
+}
+
+.table {
+  margin-top: 10px;
+  text-align: center;
+}
+
+td{
+  width: 180px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
