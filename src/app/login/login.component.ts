@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { User } from '../interfaces/user';
 import { UserService } from '../services/user.service';
@@ -20,13 +21,14 @@ export class LoginComponent implements OnInit {
     userName: ''
   }
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router:Router) { }
 
   login (user: User) {
     this.userService.login(user).subscribe(data => {
       if (data != null) {
         this.user = data;
         localStorage['id'] = this.user.id;
+        this.router.navigate(['home']);
       } else {
         alert('usuario o contraseña no validos');
       }

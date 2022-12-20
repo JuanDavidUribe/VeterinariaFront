@@ -17,4 +17,9 @@ export class UserService {
     return this.Http.post<User>(`${this.loginUrl}`, user);
   }
 
+  verifyById (id : number):Observable<User> {
+    let verifyUrl = 'http://localhost:8080/api/user/verify/'+id;
+    return this.Http.get<User>(`${verifyUrl}`);
+  }
+
 }
