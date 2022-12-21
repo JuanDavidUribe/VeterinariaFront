@@ -12,9 +12,11 @@
   justify-content: center;
 }
 
-.table {
+table {
   margin-top: 10px;
   text-align: center;
+  overflow: scroll;
+  min-width: fit-content;
 }
 
 td{
@@ -24,7 +26,6 @@ td{
 .container {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 }
 
 .actions {

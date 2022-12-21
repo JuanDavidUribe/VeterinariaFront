@@ -3,8 +3,9 @@
   <div class="actions">
     <div class="search">
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
-        <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faMagnifyingGlass"></fa-icon></button>
+        <input class="form-control me-2" [(ngModel)]="txtSearch" type="search" placeholder="Buscar por nombre" aria-label="Search" name="txtSearch">
+        <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faMagnifyingGlass" (click)="search()"></fa-icon></button>
+        <button class="btn btn-outline-success" style="margin-left:5px ;" (click)="clean()"><fa-icon class="icon" [icon]="faBroom"></fa-icon></button>
       </form>
     </div>
     <div class="buttons">
@@ -18,16 +19,16 @@
         <th scope="col">Nombre del paciente</th>
         <th scope="col">Especie</th>
         <th scope="col">Raza</th>
-        <th scope="col">Fecha nacimiento</th>
+        <th scope="col">Fecha nacimiento (yyyy-mm-dd)</th>
         <th scope="col">Informacion Dueño(s)</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Odin</td>
-        <td>Perro</td>
-        <td>Hot dog</td>
-        <td>01-12-2022</td>
+      <tr *ngFor="let patient of patients">
+        <td>{{patient.patientName}}</td>
+        <td>{{patient.specieName}}</td>
+        <td>{{patient.breedName}}</td>
+        <td>{{patient.birth}}</td>
         <td>
           <div class="form-group text-center">
             <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faPerson"></fa-icon></button>
