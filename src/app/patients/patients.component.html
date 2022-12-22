@@ -1,0 +1,86 @@
+
+<div class="container">
+  <div class="actions">
+    <div class="search">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" [(ngModel)]="txtSearch" type="search" placeholder="Buscar por nombre" aria-label="Search" name="txtSearch">
+        <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faMagnifyingGlass" (click)="search()"></fa-icon></button>
+        <button class="btn btn-outline-success" style="margin-left:5px ;" (click)="clean()"><fa-icon class="icon" [icon]="faBroom"></fa-icon></button>
+      </form>
+    </div>
+    <div class="buttons">
+    <button class="btn btn-outline-success" (click)="addPatient(addPatientModal)"><fa-icon class="icon" [icon]="faPlus"></fa-icon>Añadir</button>
+    </div>
+  </div>
+
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nombre del paciente</th>
+        <th scope="col">Especie</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Fecha nacimiento (yyyy-mm-dd)</th>
+        <th scope="col">Informacion Dueño(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients">
+        <td>{{patient.patientName}}</td>
+        <td>{{patient.specieName}}</td>
+        <td>{{patient.breedName}}</td>
+        <td>{{patient.birth}}</td>
+        <td>
+          <div class="form-group text-center">
+            <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faPerson"></fa-icon></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- inicio modal anadir paciente -->
+<ng-template #addPatientModal let-modal>
+  <div class="modal-header container">
+    <h2 class="tittle">Añadir nuevo paciente</h2>
+  </div>
+  <div class="modal-body container">
+    <form class="modal-form" action="">
+      <div class="input">
+        <label for="id" class="form-label">Identificacion</label>
+        <input [(ngModel)]="addPatientObject.id" name="id" type="number" id="id" class="form-control" placeholder="Por ejemplo: 1234">
+      </div>
+
+      <div class="input">
+        <label for="name" class="form-label">Nombre</label>
+        <input [(ngModel)]="addPatientObject.patientName" name="name" type="text" id="id" class="form-control" placeholder="Por ejemplo: Simba">
+      </div>
+
+      <div class="input">
+        <label for="specie" class="form-label">Especie</label>
+        <select class="form-select" id="specie" [(ngModel)]="speciePatient" name="specie" (change)="showBreeds()">
+          <option [value]="specie.id" *ngFor="let specie of Species">{{specie.specieName}}</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="breed" class="form-label">Raza</label>
+        <select class="form-select" id="breed" [(ngModel)]="addPatientObject.breedId" name="breed">
+          <option [value]="breed.id" *ngFor="let breed of Breeds">{{breed.breedName}}</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="birth" class="form-label">Fecha de nacimiento</label>
+        <input [(ngModel)]="addPatientObject.birth" type="date" id="birth" class="form-control" name="birth">
+      </div>
+    </form>
+
+    <div class="modal-footer">
+      <button class="btn btn-danger" (click)="closeModal()"><fa-icon class="icon" [icon]="faXmark"></fa-icon>
+        Cancelar</button>
+      <button class="btn btn-outline-success" (click)="confirmAdd()"><fa-icon class="icon" [icon]="faCheck"></fa-icon> Confirmar</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,116 @@
+.body{
+  background: linear-gradient(to right, #10898d, #20dbd2);
+  //verflow: hidden;
+}
+
+nav{
+  height: 80px;
+  position: relative;
+}
+
+.container {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  line-height: 80px;
+  z-index: 100;
+}
+
+.container-logo {
+  display: flex;
+  margin-left: 20px;
+  z-index: 100;
+  cursor: pointer;
+  flex-direction: row;
+  top: 50%;
+}
+
+.container-logo h2 {
+  color: #031c1d;
+  font-weight: 300;
+  font-size: 35px;
+  letter-spacing: 2px;
+  margin-left: 15px;
+  line-height: 2.2;
+}
+
+.container-logo .icon {
+  color: #031c1d;
+  font-size: 35px;
+}
+
+.links .link {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.links .link a {
+  text-decoration: none;
+  color: #07383a;
+  font-size: 20px;
+  margin: 0 25px;
+  letter-spacing: 3px;
+  transition: .3s;
+}
+
+.links .link .icon {
+  color: #031c1d;
+  font-size: 20px;
+}
+
+.links .link .icon:hover {
+  color: #ffffff;
+  font-size: 22px;
+  transition: .3s;
+}
+
+.links .link a:hover {
+  color: #ffffff;
+}
+
+.toggle {
+  color: #07383a;
+  margin-right: 20px;
+  font-size: 30px;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: .3s;
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .toggle{
+    display: inline-block;
+  }
+
+  .links{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #0f5e61;
+    text-align: center;
+    //overflow: hidden;
+    height: max-content;
+    width: 100%;
+    top: -100vh;
+  }
+
+  .active {
+    top: 80px;
+  }
+
+  .navActive {
+    margin-bottom: 280px;
+  }
+
+  .links .link:hover {
+    background: #0b4749;
+  }
+}
+
+.router {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}

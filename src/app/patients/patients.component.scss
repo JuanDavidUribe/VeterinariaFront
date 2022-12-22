@@ -1,0 +1,48 @@
+.btn-outline-success{
+  background-color: #10898d;
+  color: azure;
+  border: white;
+}
+
+.btn-outline-success:hover {
+  background-color: #13a3a8;
+}
+
+.tableButton {
+  justify-content: center;
+}
+
+table {
+  margin-top: 10px;
+  text-align: center;
+  overflow: scroll;
+  min-width: fit-content;
+}
+
+td{
+  width: 180px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.input{
+  margin-top: 10px;
+}
+
+.input-group {
+  padding-top: 10px;
+}
