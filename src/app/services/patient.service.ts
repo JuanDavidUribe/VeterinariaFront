@@ -32,4 +32,9 @@ export class PatientService {
     return this.Http.get<Specie>(`${specieUrl}`);
   }
 
+  addPatient(patient : Patient):Observable<void> {
+    let addUrl = 'http://localhost:8080/api/patient/add';
+    return this.Http.post<void>(`${addUrl}`, patient);
+  }
+
 }

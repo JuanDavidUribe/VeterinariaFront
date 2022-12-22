@@ -33,3 +33,16 @@ td{
   justify-content: space-between;
 }
 
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.input{
+  margin-top: 10px;
+}
+
+.input-group {
+  padding-top: 10px;
+}

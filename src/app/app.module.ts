@@ -15,7 +15,7 @@ import { PatientsComponent } from './patients/patients.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PatientsComponent
+    PatientsComponent,
   ],
   imports: [
     BrowserModule,
