@@ -31,7 +31,7 @@
         <td>{{patient.birth}}</td>
         <td>
           <div class="form-group text-center">
-            <button class="btn btn-outline-success"><fa-icon class="icon" [icon]="faPerson"></fa-icon></button>
+            <button class="btn btn-outline-success" (click)="ownerInfo(OwnerInfo, patient)"><fa-icon class="icon" [icon]="faPerson"></fa-icon></button>
           </div>
         </td>
       </tr>
@@ -49,7 +49,7 @@
     <form class="modal-form" action="">
       <div class="input">
         <label for="id" class="form-label">Identificacion</label>
-        <input [(ngModel)]="addPatientObject.id" name="id" type="number" id="id" class="form-control" placeholder="Por ejemplo: 1234">
+        <input [(ngModel)]="addPatientObject.id" name="id" type="number" id="id" class="form-control">
       </div>
 
       <div class="input">
@@ -82,5 +82,34 @@
         Cancelar</button>
       <button class="btn btn-outline-success" (click)="confirmAdd()"><fa-icon class="icon" [icon]="faCheck"></fa-icon> Confirmar</button>
     </div>
+  </div>
+</ng-template>
+
+
+<!-- inicio modal informacion duenos -->
+<ng-template #OwnerInfo let-modal>
+  <div class="modal-header container">
+    <h2 class="tittle">Informacion del dueño(s)</h2>
+  </div>
+  <div class="modal-body container">
+    <ng-container *ngIf="owners.length == 0; else elseTemplate">
+      <h5><fa-icon class="icon" [icon]="faXmark"></fa-icon> Lo sentimos, este paciente no tiene dueño</h5>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div class="infoOwner" *ngFor="let owner of owners">
+        <h5>{{owner.name}}</h5>
+        <h6>{{owner.typeId}}: {{owner.id}}</h6>
+        <h6>Telefono : {{owner.cellphone}}</h6>
+        <h6>Ciudad : {{owner.city}}</h6>
+        <h6>Direccion : {{owner.address}}</h6>
+        <button class="btn btn-outline-success" (click)="editOwner()"><fa-icon class="icon" [icon]="faPencil"></fa-icon>
+          Editar</button>
+      </div>
+    </ng-template>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-danger" (click)="closeModal()"><fa-icon class="icon" [icon]="faXmark"></fa-icon>
+      Cerrar</button>
   </div>
 </ng-template>
