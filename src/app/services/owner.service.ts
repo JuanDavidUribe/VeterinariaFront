@@ -14,4 +14,14 @@ export class OwnerService {
     let ownersUrl = 'http://localhost:8080/api/owner/listByPatient/' + id;
     return this.Http.get<Owner[]>(`${ownersUrl}`);
   }
+
+  list() :Observable<Owner[]> {
+    let listUrl = 'http://localhost:8080/api/owner/list';
+    return this.Http.get<Owner[]>(`${listUrl}`);
+  }
+
+  listWithName (name: string): Observable<Owner[]>  {
+    let listUrl = 'http://localhost:8080/api/owner/list/' + name;
+    return this.Http.get<Owner[]>(`${listUrl}`);
+  }
 }
