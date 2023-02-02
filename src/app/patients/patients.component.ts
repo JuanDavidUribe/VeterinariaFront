@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCircleInfo, faPerson, faMagnifyingGlass, faPlus, faBroom, faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faPerson, faMagnifyingGlass, faPlus, faBroom, faCheck, faXmark, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { Patient } from '../interfaces/patient';
 import { PatientService } from '../services/patient.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -7,6 +7,8 @@ import { Specie } from '../interfaces/specie';
 import { Breed } from '../interfaces/breed';
 import { SpecieService } from '../services/specie.service';
 import { BreedService } from '../services/breed.service';
+import { Owner } from '../interfaces/owner';
+import { OwnerService } from '../services/owner.service';
 
 @Component({
   selector: 'app-patients',
@@ -22,6 +24,7 @@ export class PatientsComponent implements OnInit {
   faBroom = faBroom;
   faCheck =faCheck;
   faXmark =faXmark;
+  faPencil = faPencil;
 
   txtSearch = '';
 
@@ -39,10 +42,22 @@ export class PatientsComponent implements OnInit {
     breedId : 0,
   }
 
+  patientInfoOwner : Patient = {
+    id : 0,
+    patientName : '',
+    birth : '',
+    breedId : 0,
+  }
+
+  owners : Array<Owner> = new Array();
+  ownersToPatient : Array<Owner> = new Array();
+  idOwner: number = 0;
+
   constructor(
     private patientService : PatientService,
     private specieService : SpecieService,
     private breedService :  BreedService,
+    private ownerService : OwnerService,
     private modal: NgbModal
   ) { }
 
@@ -85,7 +100,14 @@ export class PatientsComponent implements OnInit {
 
   addPatient(addPatientModal:any) {
     this.modal.open(addPatientModal,{centered: true});
+  }
 
+  ownerInfo (OwnerInfo:any, patient:Patient) {
+    this.patientInfoOwner = patient;
+    this.modal.open(OwnerInfo,{centered: true});
+    this.ownerService.getOwnersByPatient(patient.id).subscribe(data =>{
+      this.owners = data;
+    })
   }
 
   closeModal () {
@@ -117,5 +139,22 @@ export class PatientsComponent implements OnInit {
     this.patientService.addPatient(this.addPatientObject).subscribe();
     this.modal.dismissAll();
     this.search();
+  }
+
+  addOwnerToPatient (addOwnerToPatientModal : any) {
+    this.modal.open(addOwnerToPatientModal);
+    this.ownerService.list().subscribe(data => {
+      this.ownersToPatient = data;
+    });
+  }
+
+  confirmAddOwnerToPatient () {
+    this.ownerService.addOwnerToPatient(this.idOwner, this.patientInfoOwner.id).subscribe();
+    window.location.reload();
+  }
+
+  deleteOwner(owner : Owner){
+    this.ownerService.deleteOwnerFromPatient(owner, this.patientInfoOwner).subscribe();
+    window.location.reload();
   }
 }

@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { PatientsComponent } from './patients/patients.component';
+import { OwnersComponent } from './owners/owners.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PatientsComponent } from './patients/patients.component';
     LoginComponent,
     HomeComponent,
     PatientsComponent,
+    OwnersComponent,
   ],
   imports: [
     BrowserModule,
