@@ -50,6 +50,8 @@ export class PatientsComponent implements OnInit {
   }
 
   owners : Array<Owner> = new Array();
+  ownersToPatient : Array<Owner> = new Array();
+  idOwner: number = 0;
 
   constructor(
     private patientService : PatientService,
@@ -101,6 +103,7 @@ export class PatientsComponent implements OnInit {
   }
 
   ownerInfo (OwnerInfo:any, patient:Patient) {
+    this.patientInfoOwner = patient;
     this.modal.open(OwnerInfo,{centered: true});
     this.ownerService.getOwnersByPatient(patient.id).subscribe(data =>{
       this.owners = data;
@@ -138,8 +141,20 @@ export class PatientsComponent implements OnInit {
     this.search();
   }
 
+  addOwnerToPatient (addOwnerToPatientModal : any) {
+    this.modal.open(addOwnerToPatientModal);
+    this.ownerService.list().subscribe(data => {
+      this.ownersToPatient = data;
+    });
+  }
 
-  editOwner(){
+  confirmAddOwnerToPatient () {
+    this.ownerService.addOwnerToPatient(this.idOwner, this.patientInfoOwner.id).subscribe();
+    window.location.reload();
+  }
 
+  deleteOwner(owner : Owner){
+    this.ownerService.deleteOwnerFromPatient(owner, this.patientInfoOwner).subscribe();
+    window.location.reload();
   }
 }

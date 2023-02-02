@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCircleInfo, faPerson, faMagnifyingGlass, faPlus, faBroom, faCheck, faXmark, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Owner } from '../interfaces/owner';
 import { OwnerService } from '../services/owner.service';
 
@@ -23,7 +24,19 @@ export class OwnersComponent implements OnInit {
 
   owners : Array<Owner> = new Array();
 
-  constructor(private ownerService : OwnerService) { }
+  addOwnerObject : Owner = {
+    id : 0,
+    name : '',
+    typeId : '',
+    city : '',
+    address: '',
+    cellphone : ''
+  }
+
+  constructor(
+    private ownerService: OwnerService,
+    private modal: NgbModal
+  ) { }
 
   ngOnInit(): void {
     this.search();
@@ -46,8 +59,25 @@ export class OwnersComponent implements OnInit {
     this.search();
   }
 
-  addOwner () {
-
+  addOwner (addOwnerModal: any) {
+    this.modal.open(addOwnerModal,{centered: true});
   }
 
+  closeModal () {
+    this.addOwnerObject = {
+      id: 0,
+      name: '',
+      typeId: '',
+      city: '',
+      address: '',
+      cellphone: ''
+    }
+    this.modal.dismissAll();
+  }
+
+  confirmAdd () {
+    this.ownerService.addOwner(this.addOwnerObject).subscribe();
+    this.search();
+    this.closeModal();
+  }
 }
