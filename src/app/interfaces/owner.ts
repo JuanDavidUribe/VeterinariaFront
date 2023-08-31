@@ -5,4 +5,5 @@ export interface Owner {
   city : string;
   address : string;
   cellphone : string;
+  observations? : string;
 }

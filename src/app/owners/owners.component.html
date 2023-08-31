@@ -21,6 +21,7 @@
         <th scope="col">ciudad</th>
         <th scope="col">Direccion</th>
         <th scope="col">Telefono</th>
+        <th scope="col">Observaciones</th>
       </tr>
     </thead>
     <tbody>
@@ -31,7 +32,7 @@
         <td>{{owner.city}}</td>
         <td>{{owner.address}}</td>
         <td>{{owner.cellphone}}</td>
-
+        <td>{{owner.observations}}</td>
       </tr>
     </tbody>
   </table>
@@ -76,6 +77,11 @@
       <div class="input">
         <label for="name" class="form-label">Telefono</label>
         <input [(ngModel)]="addOwnerObject.cellphone" name="cellphone" type="text" id="cellphone" class="form-control" placeholder="Por ejemplo: 3011234567">
+      </div>
+
+      <div class="input">
+        <label for="name" class="form-label">Observaciones</label>
+        <input [(ngModel)]="addOwnerObject.observations" name="observations" type="text" id="observations" class="form-control" placeholder="">
       </div>
 
     </form>

@@ -136,9 +136,10 @@ export class PatientsComponent implements OnInit {
 
   confirmAdd () {
     this.addPatientObject.breedId = parseInt(this.addPatientObject.breedId.toString());
-    this.patientService.addPatient(this.addPatientObject).subscribe();
+    this.patientService.addPatient(this.addPatientObject).subscribe(() => {
+      this.search();
+    });
     this.modal.dismissAll();
-    this.search();
   }
 
   addOwnerToPatient (addOwnerToPatientModal : any) {

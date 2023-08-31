@@ -76,8 +76,9 @@ export class OwnersComponent implements OnInit {
   }
 
   confirmAdd () {
-    this.ownerService.addOwner(this.addOwnerObject).subscribe();
-    this.search();
+    this.ownerService.addOwner(this.addOwnerObject).subscribe(() => {
+      this.search();
+    });
     this.closeModal();
   }
 }
