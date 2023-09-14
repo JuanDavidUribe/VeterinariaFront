@@ -29,9 +29,12 @@
         <td>{{patient.specieName}}</td>
         <td>{{patient.breedName}}</td>
         <td>{{patient.birth}}</td>
-        <td>
+        <td class="botones">
           <div class="form-group text-center">
             <button class="btn btn-outline-success" (click)="ownerInfo(OwnerInfo, patient)"><fa-icon class="icon" [icon]="faPerson"></fa-icon></button>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-outline-success" (click)="updatePatient(updateName, patient)"><fa-icon class="icon" [icon]="faPencil"></fa-icon></button>
           </div>
         </td>
       </tr>
@@ -134,6 +137,27 @@
       <button class="btn btn-danger" (click)="closeModal()"><fa-icon class="icon" [icon]="faXmark"></fa-icon>
         Cancelar</button>
       <button class="btn btn-outline-success" (click)="confirmAddOwnerToPatient()"><fa-icon class="icon" [icon]="faCheck"></fa-icon> Confirmar</button>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #updateName let-modal>
+  <div class="modal-header container">
+    <h2 class="tittle">Cambiar el nombre del paciente con id {{patientInfoUpdate.id}}</h2>
+  </div>
+  <div class="modal-body container">
+    <form class="modal-form" action="">
+      <div class="input">
+        <label for="specie" class="form-label">Nuevo nombre</label>
+        <input type="text" id="newName"  class="form-control" [(ngModel)]="newName" name = "newName">
+      </div>
+    </form>
+
+    <div class="modal-footer">
+      <button class="btn btn-danger" (click)="closeModal()"><fa-icon class="icon" [icon]="faXmark"></fa-icon>
+        Cancelar</button>
+      <button class="btn btn-outline-success" (click)="confirmUpdatePatient()"><fa-icon class="icon" [icon]="faCheck"></fa-icon> Confirmar</button>
     </div>
   </div>
 </ng-template>

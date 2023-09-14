@@ -23,6 +23,12 @@ td{
   width: 180px;
 }
 
+.botones{
+  display: flex;
+  //justify-content:center;
+  justify-content:space-around
+}
+
 .container {
   display: flex;
   flex-direction: column;

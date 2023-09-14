@@ -37,4 +37,9 @@ export class PatientService {
     return this.Http.post<void>(`${addUrl}`, patient);
   }
 
+  updatePatient(patient : Patient, newName : string):Observable<void> {
+    let updatePatientUrl = 'http://localhost:8080/api/patient/update/' + newName;
+    return this.Http.put<void>(`${updatePatientUrl}`, patient);
+  }
+
 }

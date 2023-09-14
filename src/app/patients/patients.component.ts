@@ -49,6 +49,15 @@ export class PatientsComponent implements OnInit {
     breedId : 0,
   }
 
+  patientInfoUpdate : Patient = {
+    id : 0,
+    patientName : '',
+    birth : '',
+    breedId : 0,
+  }
+
+  public newName : string = '';
+
   owners : Array<Owner> = new Array();
   ownersToPatient : Array<Owner> = new Array();
   idOwner: number = 0;
@@ -107,6 +116,19 @@ export class PatientsComponent implements OnInit {
     this.modal.open(OwnerInfo,{centered: true});
     this.ownerService.getOwnersByPatient(patient.id).subscribe(data =>{
       this.owners = data;
+    })
+  }
+
+  updatePatient(updateName: any, patient:Patient) {
+    this.patientInfoUpdate = patient;
+    this.modal.open(updateName, {centered: true});
+  }
+
+  confirmUpdatePatient() {
+    this.patientService.updatePatient(this.patientInfoUpdate, this.newName).subscribe(data => {
+      this.newName = "",
+      this.closeModal();
+      this.search();
     })
   }
 
